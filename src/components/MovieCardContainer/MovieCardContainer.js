@@ -1,6 +1,7 @@
 import React from 'react';
 import MovieCard from '../MovieCard/MovieCard';
+import './MovieCardContainer.css'
 
-const MovieCardContainer = () => <div>MovieCardContainer <MovieCard /></div>;
+const MovieCardContainer = () => <section>MovieCardContainer <MovieCard /></section>;
 
 export default MovieCardContainer;
