@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import { authorizeUser } from "../../thunks/authorizeUser";
 import './_LoginForm.scss';
 
 class LoginForm extends Component {
@@ -20,7 +22,8 @@ class LoginForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    // this.props.handleLoginSubmit(this.state)
+    console.log('test');
+    this.props.authorizeUser(this.state);
     this.setState({
       email: '',
       password: '',
@@ -61,7 +64,6 @@ class LoginForm extends Component {
             value={password}
           />
         </label>
-        <Link to="/">
           <button
             className="submit-button"
             disabled={!isFormComplete}
@@ -69,12 +71,15 @@ class LoginForm extends Component {
           >
             Log in
           </button>
-        </Link>
       </form>
     );
   }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  authorizeUser: loginData => dispatch( authorizeUser(loginData) )
+})
+
 // LoginForm.propTypes = {}
 
-export default LoginForm;
+export default connect(null, mapDispatchToProps)(LoginForm);
