@@ -1,0 +1,36 @@
+.header {
+  align-items: center;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  height: 4rem;
+  justify-content: space-between;
+  padding: 2rem;
+
+  & .header-link {
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+
+    &:hover {
+      color: red;
+    }
+  }
+
+  & .title {
+    text-transform: uppercase;
+  }
+
+  & .user-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+  }
+
+  & .user-welcome {
+    font-size: 1.4rem;
+    margin-right: 2rem;
+    text-transform: uppercase;
+  }
+}

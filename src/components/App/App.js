@@ -1,27 +1,28 @@
 import React from 'react';
-import MovieCardContainer from '../MovieCardContainer/MovieCardContainer';
 import { fetchMovies } from '../../apiCalls/fetchMovies';
-import LoginForm from '../LoginForm/LoginForm';
+import MovieCardContainer from '../MovieCardContainer/MovieCardContainer';
+import Header from '../Header/Header';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      movies: []
-    }
+      movies: [],
+    };
   }
 
   componentDidMount() {
-    fetchMovies().then(movies => this.setState({movies: movies}));
+    fetchMovies().then(movies => this.setState({ movies }));
   }
 
   render() {
     return (
       <div>
-        <LoginForm />
-        <MovieCardContainer movies={this.state.movies}/>
-      </div>)
+        <Header />
+        <MovieCardContainer movies={this.state.movies} />
+      </div>
+    );
   }
-};
+}
 
 export default App;
