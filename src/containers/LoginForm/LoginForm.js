@@ -22,7 +22,6 @@ class LoginForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log('test');
     this.props.authorizeUser(this.state);
     this.setState({
       email: '',
