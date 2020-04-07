@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './_LoginForm.scss';
 
 class LoginForm extends Component {
@@ -60,13 +61,15 @@ class LoginForm extends Component {
             value={password}
           />
         </label>
-        <button
-          className="submit-button"
-          disabled={!isFormComplete}
-          type="submit"
-        >
-          Log in
-        </button>
+        <Link to="/">
+          <button
+            className="submit-button"
+            disabled={!isFormComplete}
+            type="submit"
+          >
+            Log in
+          </button>
+        </Link>
       </form>
     );
   }
