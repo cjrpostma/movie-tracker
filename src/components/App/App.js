@@ -1,6 +1,7 @@
 import React from 'react';
 import MovieCardContainer from '../MovieCardContainer/MovieCardContainer';
 import { fetchMovies } from '../../apiCalls/fetchMovies';
+import LoginForm from '../LoginForm/LoginForm';
 
 class App extends React.Component {
   constructor() {
@@ -15,7 +16,11 @@ class App extends React.Component {
   }
 
   render() {
-    return <div><MovieCardContainer movies={this.state.movies}/></div>
+    return (
+      <div>
+        <LoginForm />
+        <MovieCardContainer movies={this.state.movies}/>
+      </div>)
   }
 };
 
