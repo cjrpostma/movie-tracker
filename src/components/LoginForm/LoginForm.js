@@ -32,6 +32,14 @@ class LoginForm extends Component {
 
     return (
       <form className="login-form" onSubmit={this.onSubmit}>
+        <h2 className="title">Log in</h2>
+        <button
+          aria-label="Close login form"
+          className="close-button"
+          type="button"
+        >
+          <i className="far fa-times-circle"></i>
+        </button>
         <label htmlFor="email">
           Email
           <input
@@ -53,8 +61,8 @@ class LoginForm extends Component {
           />
         </label>
         <button
-          className="button-submit"
-          disabled={isFormComplete}
+          className="submit-button"
+          disabled={!isFormComplete}
           type="submit"
         >
           Log in

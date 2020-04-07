@@ -1,5 +1,73 @@
 @import '../../variables.scss';
 
 .login-form {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid black;
   border-radius: $border-radius;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 416px;
+  min-width: 304px;
+  padding: 4rem 3rem 3rem 3rem;
+  position: relative;
+
+  & .close-button {
+    background: none;
+    border: 0;
+    color: #000000;
+    font-size: 2rem;
+    right: 0.8rem;
+    position: absolute;
+    top: 0.4rem;
+
+    &:hover {
+      color: red;
+      cursor: pointer;
+    }
+  }
+
+  & input {
+    background: none;
+    border: 1px solid gray;
+    border-radius: $border-radius;
+    display: block;
+    font-size: 1.4rem;
+    margin-top: 0.2rem;
+    padding: 0.4rem 0.6rem;
+    width: 100%;
+  }
+
+  & label {
+    color: gray;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  & .submit-button {
+    background: none;
+    border: 1px solid gray;
+    border-radius: $border-radius;
+    color: #000000;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    padding: 0.4rem 0.6rem;
+    width: 100%;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:disabled {
+      color: gray;
+      cursor: default;
+    }
+  }
+
+  & .title {
+    font-weight: 800;
+    margin-bottom: 2rem;
+  }
 }

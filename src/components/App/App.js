@@ -1,10 +1,10 @@
 import React from 'react';
 import MovieCardContainer from '../MovieCardContainer/MovieCardContainer';
-import LoginForm from '../LoginForm/LoginForm';
+import Header from '../Header/Header';
 
 const App = () => (
   <div>
-    <LoginForm />
+    <Header />
     <MovieCardContainer />
   </div>
 );
