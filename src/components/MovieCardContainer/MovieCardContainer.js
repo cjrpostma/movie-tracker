@@ -1,6 +1,6 @@
 import React from 'react';
 import MovieCard from '../MovieCard/MovieCard';
-import './MovieCardContainer.css';
+import './MovieCardContainer.scss';
 
 const showMovies = (movies) => {
   return movies.map(movie => (
@@ -15,9 +15,9 @@ const showMovies = (movies) => {
     />))
 }
 
-const MovieCardContainer = ({ movies }) => (
+const MovieCardContainer = ({ movies, label }) => (
   <section className="container-wrapper">
-  <h2 className="container-title">Movies</h2>
+  <h2 className="container-title">{label}</h2>
     <section className="card-container">
       {showMovies(movies)}
     </section>

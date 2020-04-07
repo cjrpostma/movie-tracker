@@ -19,7 +19,8 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <MovieCardContainer movies={this.state.movies} />
+        <MovieCardContainer movies={this.state.movies} label={"Trending"}/>
+        <MovieCardContainer movies={this.state.movies} label={"Top Rated"}/>
       </div>
     );
   }
