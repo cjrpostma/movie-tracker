@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { fetchMovies } from '../../apiCalls/fetchMovies';
 import MovieCardContainer from '../MovieCardContainer/MovieCardContainer';
 import LoginForm from '../../containers/LoginForm/LoginForm';
-import Header from '../Header/Header';
+import Header from '../../containers/Header/Header';
 
 class App extends React.Component {
   constructor() {
