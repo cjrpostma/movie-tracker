@@ -1,11 +1,9 @@
 import * as actionTypes from '../actionTypes';
 
-export const userReducer = (state = null, action) => {
+export const loadingReducer = (state = false, action) => {
   switch (action.type) {
-    case actionTypes.LOGIN_USER:
+    case actionTypes.IS_LOADING:
       return action.payload;
-    case actionTypes.LOGOUT_USER:
-      return null;
     default:
       return state;
   }

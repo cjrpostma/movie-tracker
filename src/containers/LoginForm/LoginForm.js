@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { connect } from "react-redux";
-import { authorizeUser } from "../../thunks/authorizeUser";
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { authorizeUser } from '../../thunks/authorizeUser';
+import { hasErrored } from '../../actions';
 import './_LoginForm.scss';
+import Loader from '../../components/Loader/Loader';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -29,41 +31,53 @@ class LoginForm extends Component {
     });
   };
 
+  renderRedirect = () => {
+    if (this.props.user) return <Redirect to="/" />;
+  };
+
   render() {
-    console.log(this.props);
     const { email, password } = this.state;
     const isFormComplete = email && password;
 
     return (
-      <form className="login-form" onSubmit={this.onSubmit}>
-        <h2 className="title">Log in</h2>
-        <button
-          aria-label="Close login form"
-          className="close-button"
-          type="button"
-        >
-          <i className="far fa-times-circle"></i>
-        </button>
-        <label htmlFor="email">
-          Email
-          <input
-            id="email"
-            name="email"
-            onChange={this.onChange}
-            type="email"
-            value={email}
-          />
-        </label>
-        <label htmlFor="password">
-          Password
-          <input
-            id="password"
-            name="password"
-            onChange={this.onChange}
-            type="password"
-            value={password}
-          />
-        </label>
+      <>
+        {this.renderRedirect()}
+        <form className="login-form" onSubmit={this.onSubmit}>
+          <h2 className="title">Log in</h2>
+          <Link to="/">
+            <button
+              aria-label="Close login form"
+              className="close-button"
+              onClick={() => this.props.hasErrored(null)}
+              type="button"
+            >
+              <i className="far fa-times-circle"></i>
+            </button>
+          </Link>
+          <label htmlFor="email">
+            Email
+            <input
+              id="email"
+              name="email"
+              onChange={this.onChange}
+              type="email"
+              value={email}
+            />
+          </label>
+          <label htmlFor="password">
+            Password
+            <input
+              id="password"
+              name="password"
+              onChange={this.onChange}
+              type="password"
+              value={password}
+            />
+          </label>
+          {this.props.isLoading && <Loader />}
+          {this.props.hasError && (
+            <p className="login-error">{this.props.hasError}</p>
+          )}
           <button
             className="submit-button"
             disabled={!isFormComplete}
@@ -71,15 +85,33 @@ class LoginForm extends Component {
           >
             Log in
           </button>
-      </form>
+        </form>
+      </>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  authorizeUser: loginData => dispatch( authorizeUser(loginData) )
-})
+const mapStateToProps = state => ({
+  hasError: state.hasError,
+  isLoading: state.isLoading,
+  user: state.user,
+});
 
-// LoginForm.propTypes = {}
+const mapDispatchToProps = dispatch => ({
+  authorizeUser: loginData => dispatch(authorizeUser(loginData)),
+  hasErrored: errorStatus => dispatch(hasErrored(errorStatus)),
+});
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+LoginForm.propTypes = {
+  hasError: PropTypes.string,
+  isLoading: PropTypes.bool.isRequired,
+  user: PropTypes.shape({
+    email: PropTypes.string,
+    id: PropTypes.number,
+    name: PropTypes.string,
+  }),
+  authorizeUser: PropTypes.func.isRequired,
+  hasErrored: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
