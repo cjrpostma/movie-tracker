@@ -1,3 +1,3 @@
 export const getMovie = (state, id) => {
-  return state.movies.filter(movie => movie.id === parseInt(id))
+  return state.movies.find(movie => movie.id === parseInt(id)) || {};
 }

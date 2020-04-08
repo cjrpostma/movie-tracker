@@ -7,25 +7,23 @@ import './MovieDetailsContainer.scss';
 import MovieDetailsCard from '../../components/MovieDetailsCard/MovieDetailsCard';
 import Loader from '../../components/Loader/Loader';
 
-const MovieDetails = ({ match, movies}) => {
-
-  const correctMovie = movies.find(movie => movie.id === parseInt(match.params.id)) || {};
+const MovieDetails = ({ match, movie}) => {
 
   return (
     <div>
       <MovieDetailsCard
-        image={correctMovie.poster_path}
-        releaseDate={correctMovie.release_date}
-        title={correctMovie.title}
-        rating={correctMovie.avg_rating}
-        overview={correctMovie.overview}
+        image={movie.poster_path}
+        releaseDate={movie.release_date}
+        title={movie.title}
+        rating={movie.avg_rating}
+        overview={movie.overview}
       />
     </div>
   )
 }
 
 const mapStateToProps = (state, props) => ({
-  movies: getMovie(state, props.match.params.id)
+  movie: getMovie(state, props.match.params.id)
 });
 
 export default connect(mapStateToProps)(MovieDetails);
