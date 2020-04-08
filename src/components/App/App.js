@@ -1,7 +1,7 @@
 import React from 'react';
 import { fetchMovies } from '../../apiCalls/fetchMovies';
 import MovieCardContainer from '../MovieCardContainer/MovieCardContainer';
-import LoginForm from '../LoginForm/LoginForm';
+import LoginForm from '../../containers/LoginForm/LoginForm';
 import Header from '../Header/Header';
 import { Route, Switch } from 'react-router-dom';
 
