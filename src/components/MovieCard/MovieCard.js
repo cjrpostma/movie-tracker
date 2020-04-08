@@ -2,12 +2,13 @@ import React from 'react';
 import './MovieCard.scss';
 
 const MovieCard = ({
-  title,
+  avgRating,
+  description,
+  id,
   image,
   imageBackdrop,
   release,
-  description,
-  avgRating,
+  title,
 }) => (
   <article className="movie-card">
     <img src={image} alt={`Poster for ${title}`} className="movie-card-image" />

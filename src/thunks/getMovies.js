@@ -1,7 +1,7 @@
 import { hasErrored, isLoading, requestMovies } from '../actions';
 import { fetchMovies } from '../apiCalls/fetchMovies';
 
-export const getMovies = async dispatch => {
+export const getMovies = () => async dispatch => {
   try {
     dispatch(isLoading(true));
     const response = await fetchMovies();
