@@ -6,11 +6,22 @@ import './MovieDetails.scss';
 import Loader from '../../components/Loader/Loader';
 
 const MovieDetails = ({ match, movies}) => {
-  console.log(movies);
   const getMovie = (movies) => {
     const correctMovie = movies.find(movie => movie.id === parseInt(match.params.id));
     console.log(correctMovie);
-    return <div></div>
+    if (correctMovie) {
+      return (
+        <section className="movie-details-wrapper">
+          <img src={correctMovie.poster_path} />
+          <article>
+          <p>Release Date: {correctMovie.release_date}</p>
+          <h2>{correctMovie.title}</h2>
+          <p>Rating: {correctMovie.average_rating}</p>
+          <p>{correctMovie.overview}</p>
+          </article>
+        </section>
+      )
+    }
   }
 
   return <div>{getMovie(movies)}</div>
