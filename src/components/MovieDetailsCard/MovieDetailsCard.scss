@@ -1,0 +1,15 @@
+.movie-details-card-wrapper {
+  display: flex;
+  justify-content: center;
+  img {
+    width: 25rem;
+    margin: 5rem;
+  }
+  article {
+    max-width: 25rem;
+    margin: 5rem;
+    & > * {
+      margin: 0.5rem 0;
+    }
+  }
+}
