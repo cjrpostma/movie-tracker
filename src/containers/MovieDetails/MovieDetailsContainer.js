@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { requestMovies } from '../../actions';
 import { getMovie } from '../../selectors/';
 import './MovieDetailsContainer.scss';
 import MovieDetailsCard from '../../components/MovieDetailsCard/MovieDetailsCard';
