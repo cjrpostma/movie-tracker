@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { requestMovies } from '../../actions';
+import { getMovie } from '../../selectors/';
 import './MovieDetailsContainer.scss';
 import MovieDetailsCard from '../../components/MovieDetailsCard/MovieDetailsCard';
 import Loader from '../../components/Loader/Loader';
@@ -23,8 +24,8 @@ const MovieDetails = ({ match, movies}) => {
   )
 }
 
-const mapStateToProps = state => ({
-  movies: state.movies
+const mapStateToProps = (state, props) => ({
+  movies: getMovie(state, props.match.params.id)
 });
 
 export default connect(mapStateToProps)(MovieDetails);
