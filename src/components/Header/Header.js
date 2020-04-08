@@ -13,7 +13,7 @@ class Header extends Component {
   }
 
   logOutUser() {
-    this.props.logOutUser(null);
+    this.props.logOutUser();
   }
 
   // TODO Will need to refactor this to allow the global store to hold the authorization status. Then it can be passed in as props and this can be made into a functional component.
@@ -40,7 +40,6 @@ class Header extends Component {
               </Link>
             </div>
           )}
-          <button onClick={() => this.logOutUser()}>Log out</button>
         </div>
       </header>
     );
@@ -48,7 +47,7 @@ class Header extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  logOutUser: dispatch( logout => logOutUser(logout) )
+  logOutUser: () => dispatch( logOutUser() )
 })
 
 export default connect(null, mapDispatchToProps)(Header);

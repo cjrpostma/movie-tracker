@@ -3,7 +3,6 @@ export const loginUser = userInfo => ({
   payload: userInfo
 })
 
-export const logOutUser = (logout) => ({
-  type: 'LOGOUT_USER',
-  payload: logout
+export const logOutUser = () => ({
+  type: 'LOGOUT_USER'
 });
