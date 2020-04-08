@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { getTopMovies, getLatestMovies } from '../../selectors';
 import './MovieCardContainer.scss';
 import Loader from '../../components/Loader/Loader';
 import MovieCard from '../../components/MovieCard/MovieCard';
 
-const MovieCardContainer = ({ isLoading, movies }) => {
-  const renderedMovies = movies.map(movie => (
+const MovieCardContainer = ({ isLoading, movies, topMovies, latestMovies }) => {
+
+  const renderedMovies = (movies) => {
+    return movies.map(movie => (
     <MovieCard
       avgRating={movie.average_rating}
       description={movie.overview}
@@ -17,13 +20,15 @@ const MovieCardContainer = ({ isLoading, movies }) => {
       release={movie.release_date}
       title={movie.title}
     />
-  ));
+  ))};
 
   return (
     <section className="container-wrapper">
-      <h2 className="container-title">All movies</h2>
+      <h2 className="container-title">Latest</h2>
       {isLoading && <Loader />}
-      <section className="card-container">{renderedMovies}</section>
+      <section className="card-container">{renderedMovies(latestMovies)}</section>
+      <h2 className="container-title">Top Rated</h2>
+      <section className="card-container">{renderedMovies(topMovies)}</section>
     </section>
   );
 };
@@ -31,6 +36,8 @@ const MovieCardContainer = ({ isLoading, movies }) => {
 const mapStateToProps = state => ({
   isLoading: state.isLoading,
   movies: state.movies,
+  topMovies: getTopMovies(state.movies),
+  latestMovies: getLatestMovies(state.movies),
 });
 
 MovieCardContainer.propTypes = {
