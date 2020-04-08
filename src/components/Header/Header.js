@@ -20,21 +20,21 @@ class Header extends Component {
   };
 
   render() {
-    const { currentUser } = this.props;
+    const { user } = this.props;
     return (
       <>
         {this.renderRedirect()}
         <header className="header">
           <h1 className="title">Movie Tracker</h1>
           <div className="login-container">
-            {!currentUser && (
+            {!user && (
               <Link to="/login" className="header-link">
                 Log in
               </Link>
             )}
-            {currentUser && (
+            {user && (
               <div className="user-container">
-                <p className="user-welcome">Hi, {currentUser.name}</p>
+                <p className="user-welcome">Hi, {user.name}</p>
                 <a className="header-link" onClick={this.onLogout}>
                   Log out
                 </a>
@@ -48,7 +48,7 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.user,
+  user: state.user,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -56,7 +56,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 Header.propTypes = {
-  currentUser: PropTypes.shape({
+  user: PropTypes.shape({
     email: PropTypes.string,
     id: PropTypes.number,
     name: PropTypes.string,
