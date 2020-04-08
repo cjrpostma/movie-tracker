@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import { fetchMovies } from '../../apiCalls/fetchMovies';
 import { getMovies } from '../../thunks/getMovies';
 import MovieCardContainer from '../MovieCardContainer/MovieCardContainer';
+import MovieDetails from '../MovieDetails/MovieDetails';
 import LoginForm from '../LoginForm/LoginForm';
 import Header from '../Header/Header';
 
@@ -17,7 +18,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Route path="/movies/:id" />
+        <Route path="/movies/:id" component={MovieDetails}/>
         <Route path="/login" component={LoginForm} />
         <Route exact path="/" component={MovieCardContainer} />
       </div>
