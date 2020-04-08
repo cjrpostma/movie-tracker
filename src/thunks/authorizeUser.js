@@ -11,7 +11,9 @@ export const authorizeUser = loginData => async dispatch => {
     const data = await response.json();
     dispatch(isLoading(false));
     await dispatch(loginUser(data.user));
+    dispatch(hasErrored(null));
   } catch (error) {
+    dispatch(isLoading(false));
     dispatch(hasErrored(error.message));
   }
 };

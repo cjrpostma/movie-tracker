@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { authorizeUser } from '../../thunks/authorizeUser';
 import './_LoginForm.scss';
 
+import Loader from '../../components/Loader/Loader';
+
 class LoginForm extends Component {
   constructor(props) {
     super(props);
@@ -65,7 +67,10 @@ class LoginForm extends Component {
             value={password}
           />
         </label>
-        {this.props.hasError && <p>{this.props.hasError}</p>}
+        {this.props.isLoading && <Loader />}
+        {this.props.hasError && (
+          <p className="login-error">{this.props.hasError}</p>
+        )}
         <button
           className="submit-button"
           disabled={!isFormComplete}
