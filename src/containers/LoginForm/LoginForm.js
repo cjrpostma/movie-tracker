@@ -54,7 +54,6 @@ class LoginForm extends Component {
               <i className="far fa-times-circle"></i>
             </button>
           </Link>
-
           <label htmlFor="email">
             Email
             <input

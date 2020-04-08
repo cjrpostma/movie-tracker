@@ -1,18 +1,20 @@
+import * as actionTypes from '../actionTypes';
+
 export const hasErrored = errorMessage => ({
-  type: 'HAS_ERRORED',
+  type: actionTypes.HAS_ERRORED,
   payload: errorMessage,
 });
 
 export const isLoading = status => ({
-  type: 'IS_LOADING',
+  type: actionTypes.IS_LOADING,
   payload: status,
 });
 
 export const loginUser = userInfo => ({
-  type: 'LOGIN_USER',
+  type: actionTypes.LOGIN_USER,
   payload: userInfo,
 });
 
 export const logoutUser = () => ({
-  type: 'LOGOUT_USER',
+  type: actionTypes.LOGOUT_USER,
 });
