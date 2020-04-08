@@ -7,11 +7,11 @@ export const authorizeUser = (loginData) => {
       const response = await postUser(loginData);
       if (!response.ok) {
         throw new Error("Please use a valid username and password")
+        console.log(response);
       }
       const data = await response.json();
       await dispatch(loginUser(data.user));
     } catch(error) {
-
     }
   }
 }
