@@ -1,53 +1,67 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions';
 import './_Header.scss';
 
 class Header extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isAuthorized: false,
-    };
-  }
+  state = {
+    redirect: false,
+  };
 
-  logOutUser() {
+  onLogout = () => {
     this.props.logoutUser();
-  }
+    this.setState({ redirect: true });
+  };
+
+  renderRedirect = () => {
+    if (this.state.redirect) return <Redirect to="/" />;
+  };
 
   render() {
-    const { isAuthorized } = this.state;
-
+    const { currentUser } = this.props;
     return (
-      <header className="header">
-        <h1 className="title">Movie Tracker</h1>
-        <div className="login-container">
-          {!isAuthorized && (
-            <Link to="/login" className="header-link">
-              Log in
-            </Link>
-          )}
-          {isAuthorized && (
-            <div className="user-container">
-              <p className="user-welcome">Hi, Username</p>
-              <Link to="/" className="header-link">
-                Log out
+      <>
+        {this.renderRedirect()}
+        <header className="header">
+          <h1 className="title">Movie Tracker</h1>
+          <div className="login-container">
+            {!currentUser && (
+              <Link to="/login" className="header-link">
+                Log in
               </Link>
-            </div>
-          )}
-        </div>
-      </header>
+            )}
+            {currentUser && (
+              <div className="user-container">
+                <p className="user-welcome">Hi, {currentUser.name}</p>
+                <a className="header-link" onClick={this.onLogout}>
+                  Log out
+                </a>
+              </div>
+            )}
+          </div>
+        </header>
+      </>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  user: state.userReducer,
+  currentUser: state.user,
 });
 
 const mapDispatchToProps = dispatch => ({
   logoutUser: () => dispatch(logoutUser()),
 });
 
-export default connect(null, mapDispatchToProps)(Header);
+Header.propTypes = {
+  currentUser: PropTypes.shape({
+    email: PropTypes.string,
+    id: PropTypes.number,
+    name: PropTypes.string,
+  }),
+  logoutUser: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

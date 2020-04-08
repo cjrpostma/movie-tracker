@@ -30,7 +30,6 @@ class LoginForm extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { email, password } = this.state;
     const isFormComplete = email && password;
 
