@@ -18,3 +18,8 @@ export const loginUser = userInfo => ({
 export const logoutUser = () => ({
   type: actionTypes.LOGOUT_USER,
 });
+
+export const requestMovies = movies => ({
+  type: actionTypes.REQUEST_MOVIES,
+  payload: movies,
+});

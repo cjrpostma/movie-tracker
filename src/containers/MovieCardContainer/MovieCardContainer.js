@@ -1,9 +1,9 @@
 import React from 'react';
-import MovieCard from '../MovieCard/MovieCard';
+import MovieCard from '../../components/MovieCard/MovieCard';
 import './MovieCardContainer.scss';
 
-const showMovies = (movies) => {
-  return movies.map(movie => (
+const showMovies = movies =>
+  movies.map(movie => (
     <MovieCard
       key={movie.id}
       title={movie.title}
@@ -12,15 +12,13 @@ const showMovies = (movies) => {
       release={movie.release_date}
       description={movie.overview}
       avgRating={movie.average_rating}
-    />))
-}
+    />
+  ));
 
 const MovieCardContainer = ({ movies, label }) => (
   <section className="container-wrapper">
-  <h2 className="container-title">{label}</h2>
-    <section className="card-container">
-      {showMovies(movies)}
-    </section>
+    <h2 className="container-title">{label}</h2>
+    <section className="card-container">{showMovies(movies)}</section>
   </section>
 );
 
