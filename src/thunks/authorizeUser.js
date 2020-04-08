@@ -6,7 +6,7 @@ export const authorizeUser = loginData => async dispatch => {
     dispatch(isLoading(true));
     const response = await postUser(loginData);
     if (!response.ok) {
-      throw new Error('Please use a valid username and password.');
+      throw Error('Please use a valid username and password.');
     }
     const data = await response.json();
     dispatch(isLoading(false));

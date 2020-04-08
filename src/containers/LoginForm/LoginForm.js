@@ -36,13 +36,15 @@ class LoginForm extends Component {
     return (
       <form className="login-form" onSubmit={this.onSubmit}>
         <h2 className="title">Log in</h2>
-        <button
-          aria-label="Close login form"
-          className="close-button"
-          type="button"
-        >
-          <i className="far fa-times-circle"></i>
-        </button>
+        <Link to="/">
+          <button
+            aria-label="Close login form"
+            className="close-button"
+            type="button"
+          >
+            <i className="far fa-times-circle"></i>
+          </button>
+        </Link>
         <label htmlFor="email">
           Email
           <input
@@ -63,6 +65,7 @@ class LoginForm extends Component {
             value={password}
           />
         </label>
+        {this.props.hasError && <p>{this.props.hasError}</p>}
         <button
           className="submit-button"
           disabled={!isFormComplete}
@@ -75,10 +78,15 @@ class LoginForm extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  hasError: state.hasError,
+  isLoading: state.isLoading,
+});
+
 const mapDispatchToProps = dispatch => ({
   authorizeUser: loginData => dispatch(authorizeUser(loginData)),
 });
 
 // LoginForm.propTypes = {}
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
