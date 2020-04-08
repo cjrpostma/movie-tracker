@@ -6,7 +6,7 @@ import './MovieCardContainer.scss';
 import Loader from '../../components/Loader/Loader';
 import MovieCard from '../../components/MovieCard/MovieCard';
 
-const MovieCardContainer = ({ isLoading, movies, topMovies, latestMovies }) => {
+const MovieCardContainer = ({ isLoading, topMovies, latestMovies }) => {
 
   const renderedMovies = (movies) => {
     return movies.map(movie => (
@@ -35,7 +35,6 @@ const MovieCardContainer = ({ isLoading, movies, topMovies, latestMovies }) => {
 
 const mapStateToProps = state => ({
   isLoading: state.isLoading,
-  movies: state.movies,
   topMovies: getTopMovies(state.movies),
   latestMovies: getLatestMovies(state.movies),
 });
