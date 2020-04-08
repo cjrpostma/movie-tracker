@@ -1,13 +1,17 @@
-import { loginUser } from '../actions';
+import { hasErrored, isLoading, loginUser } from '../actions';
 import { postUser } from '../apiCalls/postUser';
 
 export const authorizeUser = loginData => async dispatch => {
   try {
+    dispatch(isLoading(true));
     const response = await postUser(loginData);
     if (!response.ok) {
       throw new Error('Please use a valid username and password.');
     }
     const data = await response.json();
+    dispatch(isLoading(false));
     await dispatch(loginUser(data.user));
-  } catch (error) {}
+  } catch (error) {
+    dispatch(hasErrored(error.message));
+  }
 };

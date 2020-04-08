@@ -1,6 +1,6 @@
-export const hasErrored = error => ({
+export const hasErrored = errorMessage => ({
   type: 'HAS_ERRORED',
-  payload: error,
+  payload: errorMessage,
 });
 
 export const isLoading = status => ({
