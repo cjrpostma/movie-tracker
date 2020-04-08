@@ -1,8 +1,8 @@
 export const loginUser = userInfo => ({
   type: 'LOGIN_USER',
-  payload: userInfo
-})
+  payload: userInfo,
+});
 
-export const logOutUser = () => ({
-  type: 'LOGOUT_USER'
+export const logoutUser = () => ({
+  type: 'LOGOUT_USER',
 });

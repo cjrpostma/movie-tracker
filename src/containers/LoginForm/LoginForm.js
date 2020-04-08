@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { connect } from "react-redux";
-import { authorizeUser } from "../../thunks/authorizeUser";
+import { connect } from 'react-redux';
+import { authorizeUser } from '../../thunks/authorizeUser';
 import './_LoginForm.scss';
 
 class LoginForm extends Component {
@@ -64,21 +64,21 @@ class LoginForm extends Component {
             value={password}
           />
         </label>
-          <button
-            className="submit-button"
-            disabled={!isFormComplete}
-            type="submit"
-          >
-            Log in
-          </button>
+        <button
+          className="submit-button"
+          disabled={!isFormComplete}
+          type="submit"
+        >
+          Log in
+        </button>
       </form>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  authorizeUser: loginData => dispatch( authorizeUser(loginData) )
-})
+const mapDispatchToProps = dispatch => ({
+  authorizeUser: loginData => dispatch(authorizeUser(loginData)),
+});
 
 // LoginForm.propTypes = {}
 

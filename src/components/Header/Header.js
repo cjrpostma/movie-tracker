@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './_Header.scss';
 import { connect } from 'react-redux';
-import { logOutUser } from '../../actions';
+import { logoutUser } from '../../actions';
+import './_Header.scss';
 
 class Header extends Component {
   constructor() {
@@ -13,12 +13,8 @@ class Header extends Component {
   }
 
   logOutUser() {
-    this.props.logOutUser();
+    this.props.logoutUser();
   }
-
-  // TODO Will need to refactor this to allow the global store to hold the authorization status. Then it can be passed in as props and this can be made into a functional component.
-
-  // TODO Will need to mapStateToProps to bring in the user's name
 
   render() {
     const { isAuthorized } = this.state;
@@ -46,8 +42,12 @@ class Header extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  logOutUser: () => dispatch( logOutUser() )
-})
+const mapStateToProps = state => ({
+  user: state.userReducer,
+});
+
+const mapDispatchToProps = dispatch => ({
+  logoutUser: () => dispatch(logoutUser()),
+});
 
 export default connect(null, mapDispatchToProps)(Header);
