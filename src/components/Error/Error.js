@@ -4,6 +4,6 @@ import './_Error.scss';
 
 const Error = props => <p className="error">{props.error}</p>;
 
-// Error.propTypes = {}
+Error.propTypes = {};
 
 export default Error;
