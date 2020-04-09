@@ -1,7 +1,7 @@
+import { BASE_URL, MOVIES } from './constants';
+
 export const fetchMovies = async () => {
-  const response = await fetch(
-    'https://rancid-tomatillos.herokuapp.com/api/v1/movies'
-  );
+  const response = await fetch(BASE_URL + MOVIES);
 
   if (!response.ok) {
     throw new Error('Error fetching movies.');

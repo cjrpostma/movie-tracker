@@ -1,5 +1,4 @@
 import { getMovies } from './getMovies';
-import { fetchMovies } from '../apiCalls/fetchMovies';
 import { isLoading, hasErrored, requestMovies } from '../actions';
 
 describe('getMovies', () => {

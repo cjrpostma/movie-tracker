@@ -30,15 +30,15 @@ export const requestMovies = movies => ({
 // rating actions
 export const getRatingsSuccess = ratings => ({
   type: actionTypes.GET_RATINGS_SUCCESS,
-  payload: { ratings },
+  payload: ratings,
 });
 
 export const postRatingSuccess = ratings => ({
   type: actionTypes.POST_RATING_SUCCESS,
-  payload: { ratings },
+  payload: ratings,
 });
 
 export const deleteRatingSuccess = ratings => ({
   type: actionTypes.DELETE_RATING_SUCCESS,
-  payload: { ratings },
+  payload: ratings,
 });
