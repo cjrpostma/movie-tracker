@@ -25,7 +25,9 @@ class Header extends Component {
       <>
         {this.renderRedirect()}
         <header className="header">
-          <h1 className="title">Movie Tracker</h1>
+          <h1 className="title">
+            <i className="fas fa-film"></i>Movie Tracker
+          </h1>
           <div className="login-container">
             {!user && (
               <Link to="/login" className="header-link">

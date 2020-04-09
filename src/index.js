@@ -7,7 +7,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import App from './containers/App/App';
-import './index.css';
+import './index.scss';
 
 const store = createStore(
   rootReducer,
