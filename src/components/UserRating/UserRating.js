@@ -19,10 +19,13 @@ class UserRating extends React.Component {
     const hoverValue = e.target.dataset.value;
 
     Array.from(stars).forEach(star => {
-      console.log('hover', hoverValue);
-      console.log('star', star.dataset.value);
       star.style.color = hoverValue >= star.dataset.value ? "#ffdd00" : '#e4e4e4';
     });
+  }
+
+  updateRating = (e) => {
+    const rating = parseInt(e.target.dataset.value) +  1;
+    this.setState({rating: rating});
   }
 
   render() {
@@ -34,16 +37,16 @@ class UserRating extends React.Component {
         <p className="rating">{this.state.rating || "Rate This"}</p>
         <i className="fas fa-thumbs-up"></i>
         <div className={dropdownClasses} onMouseOver={this.hoverHandler}>
-          <i className="fas fa-thumbs-up rating-selector" data-value="0"></i>
-          <i className="fas fa-thumbs-up rating-selector" data-value="1"></i>
-          <i className="fas fa-thumbs-up rating-selector" data-value="2"></i>
-          <i className="fas fa-thumbs-up rating-selector" data-value="3"></i>
-          <i className="fas fa-thumbs-up rating-selector" data-value="4"></i>
-          <i className="fas fa-thumbs-up rating-selector" data-value="5"></i>
-          <i className="fas fa-thumbs-up rating-selector" data-value="6"></i>
-          <i className="fas fa-thumbs-up rating-selector" data-value="7"></i>
-          <i className="fas fa-thumbs-up rating-selector" data-value="8"></i>
-          <i className="fas fa-thumbs-up rating-selector" data-value="9"></i>
+          <i className="fas fa-thumbs-up rating-selector" data-value="0" onClick={this.updateRating}></i>
+          <i className="fas fa-thumbs-up rating-selector" data-value="1" onClick={this.updateRating}></i>
+          <i className="fas fa-thumbs-up rating-selector" data-value="2" onClick={this.updateRating}></i>
+          <i className="fas fa-thumbs-up rating-selector" data-value="3" onClick={this.updateRating}></i>
+          <i className="fas fa-thumbs-up rating-selector" data-value="4" onClick={this.updateRating}></i>
+          <i className="fas fa-thumbs-up rating-selector" data-value="5" onClick={this.updateRating}></i>
+          <i className="fas fa-thumbs-up rating-selector" data-value="6" onClick={this.updateRating}></i>
+          <i className="fas fa-thumbs-up rating-selector" data-value="7" onClick={this.updateRating}></i>
+          <i className="fas fa-thumbs-up rating-selector" data-value="8" onClick={this.updateRating}></i>
+          <i className="fas fa-thumbs-up rating-selector" data-value="9" onClick={this.updateRating}></i>
           <i className="far fa-times-circle"></i>
         </div>
       </div>)
