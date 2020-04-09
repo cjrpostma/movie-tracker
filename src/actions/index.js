@@ -33,9 +33,9 @@ export const getRatingsSuccess = ratings => ({
   payload: { ratings },
 });
 
-export const postRatingSuccess = rating => ({
+export const postRatingSuccess = ratings => ({
   type: actionTypes.POST_RATING_SUCCESS,
-  payload: { rating },
+  payload: { ratings },
 });
 
 export const deleteRatingSuccess = ratings => ({
