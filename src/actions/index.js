@@ -1,5 +1,6 @@
 import * as actionTypes from '../actionTypes';
 
+// loading, error actions
 export const hasErrored = errorMessage => ({
   type: actionTypes.HAS_ERRORED,
   payload: errorMessage,
@@ -10,6 +11,7 @@ export const isLoading = status => ({
   payload: status,
 });
 
+// user actions
 export const loginUser = userInfo => ({
   type: actionTypes.LOGIN_USER,
   payload: userInfo,
@@ -19,7 +21,24 @@ export const logoutUser = () => ({
   type: actionTypes.LOGOUT_USER,
 });
 
+// movie actions
 export const requestMovies = movies => ({
   type: actionTypes.REQUEST_MOVIES,
   payload: movies,
+});
+
+// rating actions
+export const getRatingsSuccess = ratings => ({
+  type: actionTypes.GET_RATINGS_SUCCESS,
+  payload: { ratings },
+});
+
+export const postRatingSuccess = rating => ({
+  type: actionTypes.POST_RATING_SUCCESS,
+  payload: { rating },
+});
+
+export const deleteRatingSuccess = ratings => ({
+  type: actionTypes.DELETE_RATING_SUCCESS,
+  payload: { ratings },
 });
