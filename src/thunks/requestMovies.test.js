@@ -1,8 +1,7 @@
-import { getMovies } from './getMovies';
-import { fetchMovies } from '../apiCalls/fetchMovies';
-import { isLoading, hasErrored, requestMovies } from '../actions';
+import { requestMovies } from './requestMovies';
+import { isLoading, hasErrored, getMoviesSuccess } from '../actions';
 
-describe('getMovies', () => {
+describe('requestMovies', () => {
   let mockUrl;
   let mockMovies;
   let mockDispatch;
@@ -41,19 +40,19 @@ describe('getMovies', () => {
   });
 
   it('calls dispatch with isLoading(true)', () => {
-    const thunk = getMovies();
+    const thunk = requestMovies();
     thunk(mockDispatch);
     expect(mockDispatch).toHaveBeenCalledWith(isLoading(true));
   });
 
   it('calls fetch with the correct url', () => {
-    const thunk = getMovies();
+    const thunk = requestMovies();
     thunk(mockDispatch);
     expect(window.fetch).toHaveBeenCalledWith(mockUrl);
   });
 
   it('should dispatch isLoading(false) if response ok', async () => {
-    const thunk = getMovies();
+    const thunk = requestMovies();
     expect(mockDispatch).not.toHaveBeenCalledWith(isLoading(false));
     await thunk(mockDispatch);
     expect(mockDispatch).toHaveBeenCalledWith(isLoading(false));
@@ -66,7 +65,7 @@ describe('getMovies', () => {
       })
     );
 
-    const thunk = getMovies();
+    const thunk = requestMovies();
     await thunk(mockDispatch);
     expect(mockDispatch).toHaveBeenCalledWith(
       hasErrored('Error fetching movies.')
@@ -74,9 +73,11 @@ describe('getMovies', () => {
   });
 
   it('should dispatch requestMovies with the correct arguments', async () => {
-    const thunk = getMovies();
+    const thunk = requestMovies();
     mockDispatch = jest.fn().mockResolvedValueOnce(mockMovies);
     await thunk(mockDispatch);
-    expect(mockDispatch).toHaveBeenCalledWith(requestMovies(mockMovies.movies));
+    expect(mockDispatch).toHaveBeenCalledWith(
+      getMoviesSuccess(mockMovies.movies)
+    );
   });
 });

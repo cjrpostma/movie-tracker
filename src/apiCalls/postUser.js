@@ -1,14 +1,15 @@
+import { BASE_URL, LOGIN } from './constants';
+
 export const postUser = async userInfo => {
-  const response = await fetch(
-    'https://rancid-tomatillos.herokuapp.com/api/v1/login',
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userInfo),
-    }
-  );
+  const init = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userInfo),
+  };
+
+  const response = await fetch(BASE_URL + LOGIN, init);
 
   if (!response.ok) {
     throw Error('Please use a valid username and password.');
