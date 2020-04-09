@@ -1,6 +1,5 @@
 .user-rating {
   display: flex;
-  font-size: 0.75rem;
   justify-content: space-between;
   align-items: baseline;
   margin: 0.5rem 0;
@@ -39,4 +38,8 @@
 
 .yellow {
   color: #ffdd00;
+}
+
+.rate-this {
+  font-size: 0.75rem;
 }
