@@ -22,8 +22,8 @@ export const logoutUser = () => ({
 });
 
 // movie actions
-export const requestMovies = movies => ({
-  type: actionTypes.REQUEST_MOVIES,
+export const getMoviesSuccess = movies => ({
+  type: actionTypes.GET_MOVIES_SUCCESS,
   payload: movies,
 });
 

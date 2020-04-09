@@ -1,6 +1,6 @@
 import { BASE_URL, MOVIES } from './constants';
 
-export const fetchMovies = async () => {
+export const getMovies = async () => {
   const response = await fetch(BASE_URL + MOVIES);
 
   if (!response.ok) {
