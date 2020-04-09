@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import './MovieCard.scss';
+import UserRating from '../UserRating/UserRating';
 
 const MovieCard = ({
   avgRating,
@@ -11,18 +12,25 @@ const MovieCard = ({
   release,
   title,
 }) => (
-  <Link to={"/movies/" + id}>
+
     <article className="movie-card">
-      <img src={image} alt={`Poster for ${title}`} className="movie-card-image" />
+      <Link to={"/movies/" + id}>
+        <img src={image} alt={`Poster for ${title}`} className="movie-card-image" />
+      </Link>
       <div className="title-wrapper">
-        <p className="movie-card-title">{title}</p>
-        <p className="movie-card-rating">
-          {avgRating}
-          <i className="fas fa-star"></i>
-        </p>
+        <Link to={"/movies/" + id}>
+          <p className="movie-card-title">{title}</p>
+        </Link>
+        <div className="movie-card-rating">
+          <div className="avg-rating">
+            <p>{avgRating.toFixed()}</p>
+            <i className="fas fa-star"></i>
+          </div>
+          <UserRating />
+        </div>
       </div>
     </article>
-  </Link>
+
 );
 
 export default MovieCard;

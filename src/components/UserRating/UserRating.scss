@@ -1,0 +1,45 @@
+.user-rating {
+  display: flex;
+  align-items: baseline;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  position: relative;
+  width: min-content;
+}
+
+.rating {
+  margin-right: 0.25rem;
+}
+
+.ratings-dropdown {
+  background: white;
+  padding: 0.5rem;
+  z-index: 25;
+  position: absolute;
+  display: flex;
+  border: solid 1px rgba(0,0,0,0.25);
+  border-radius: 0.25rem;
+  top: 125%;
+}
+
+.fa-thumbs-up {
+  font-size: 1rem;
+  margin: 0 0.275rem;
+  color: #e4e4e4;
+}
+
+.fa-times-circle {
+  padding-left: 0.25rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.yellow {
+  color: #ffdd00;
+}
+
+.rate-this {
+  font-size: 0.75rem;
+}
