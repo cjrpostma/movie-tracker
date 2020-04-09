@@ -1,13 +1,16 @@
 import React from 'react';
 import './UserRating.scss';
+import { connect } from 'react-redux';
+import { postRating } from '../../apiCalls/postRating';
 import PropTypes from 'prop-types';
 
 class UserRating extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       rating: null,
-      dropdown: false
+      dropdown: false,
+      movieID: props.movieID,
     }
   }
 
@@ -24,9 +27,10 @@ class UserRating extends React.Component {
     });
   }
 
-  updateRating = (e) => {
+  updateRating = async (e) => {
     const rating = parseInt(e.target.dataset.value) +  1;
     this.setState({rating: rating});
+    console.log(await postRating(this.props.movieID, 2, rating));
   }
 
   render() {

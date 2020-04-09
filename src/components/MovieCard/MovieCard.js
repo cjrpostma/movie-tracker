@@ -26,7 +26,7 @@ const MovieCard = ({
             <p>{avgRating.toFixed()}</p>
             <i className="fas fa-star"></i>
           </div>
-          <UserRating />
+          <UserRating movieID={id}/>
         </div>
       </div>
     </article>
