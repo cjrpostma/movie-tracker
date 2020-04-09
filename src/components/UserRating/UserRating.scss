@@ -1,0 +1,17 @@
+.user-rating {
+  display: flex;
+  font-size: 0.75rem;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0.5rem 0;
+  cursor: pointer;
+}
+
+.rating {
+  margin-right: 0.25rem;
+}
+
+.fa-thumbs-up {
+  font-size: 1rem;
+  margin: 0 0.275rem;
+}
