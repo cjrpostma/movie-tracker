@@ -6,7 +6,7 @@ import MovieDetailsCard from '../../components/MovieDetailsCard/MovieDetailsCard
 import Loader from '../../components/Loader/Loader';
 
 const MovieDetails = ({ match, movie}) => {
-  console.log(movie);
+
   return (
     <div>
       <MovieDetailsCard

@@ -1,5 +1,6 @@
 import React from 'react';
 import './UserRating.scss';
+import PropTypes from 'prop-types';
 
 class UserRating extends React.Component {
   constructor() {
@@ -53,5 +54,8 @@ class UserRating extends React.Component {
       </div>)
   }
 }
+
+UserRating.propTypes = {
+};
 
 export default UserRating;
