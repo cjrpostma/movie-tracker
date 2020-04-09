@@ -1,4 +1,5 @@
 import React from 'react';
+import UserRating from '../UserRating/UserRating';
 import PropTypes from 'prop-types';
 import './MovieDetailsCard.scss';
 
@@ -9,6 +10,7 @@ const MovieDetailsCard = ({ image, releaseDate, title, rating, overview }) => (
       <p>Release Date: {releaseDate}</p>
       <h2>{title}</h2>
       <p>Rating: {rating}</p>
+      <UserRating />
       <p>{overview}</p>
     </article>
   </section>

@@ -14,9 +14,13 @@ const MovieCard = ({
 }) => (
 
     <article className="movie-card">
-      <img src={image} alt={`Poster for ${title}`} className="movie-card-image" />
+      <Link to={"/movies/" + id}>
+        <img src={image} alt={`Poster for ${title}`} className="movie-card-image" />
+      </Link>
       <div className="title-wrapper">
-        <p className="movie-card-title">{title}</p>
+        <Link to={"/movies/" + id}>
+          <p className="movie-card-title">{title}</p>
+        </Link>
         <div className="movie-card-rating">
           <div className="avg-rating">
             <p>{avgRating.toFixed()}</p>

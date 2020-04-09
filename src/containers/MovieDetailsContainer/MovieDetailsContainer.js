@@ -6,14 +6,14 @@ import MovieDetailsCard from '../../components/MovieDetailsCard/MovieDetailsCard
 import Loader from '../../components/Loader/Loader';
 
 const MovieDetails = ({ match, movie}) => {
-
+  console.log(movie);
   return (
     <div>
       <MovieDetailsCard
         image={movie.poster_path}
         releaseDate={movie.release_date}
         title={movie.title}
-        rating={movie.avg_rating}
+        rating={movie.average_rating ? movie.average_rating.toFixed() : null}
         overview={movie.overview}
       />
     </div>
