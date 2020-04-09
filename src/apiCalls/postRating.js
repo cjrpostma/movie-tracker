@@ -10,13 +10,11 @@ export const postRating = async (movieID, userID, newRating) => {
     body: JSON.stringify(data),
   };
 
-  console.log(init);
-
   const response = await fetch(BASE_URL + USERS + "/" + userID + RATINGS, init);
 
-  // if (!response.ok) {
-  //   throw Error('Invalid movie or rating.');
-  // }
+  if (!response.ok) {
+    throw Error('Invalid movie or rating.');
+  }
 
   const rating = await response.json();
 

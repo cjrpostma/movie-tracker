@@ -2,6 +2,7 @@ import React from 'react';
 import './UserRating.scss';
 import { connect } from 'react-redux';
 import { postRating } from '../../apiCalls/postRating';
+import { requestRating } from '../../thunks/requestRating';
 import PropTypes from 'prop-types';
 
 class UserRating extends React.Component {
@@ -59,7 +60,15 @@ class UserRating extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+
+}
+
+const mapDispatchToProps = dispatch => ({
+  postRating: () => dispatch(requestRating())
+})
+
 UserRating.propTypes = {
 };
 
-export default UserRating;
+export default connect(mapStateToProps, mapDispatchToProps)(UserRating);
