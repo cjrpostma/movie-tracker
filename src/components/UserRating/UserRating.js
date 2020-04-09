@@ -31,11 +31,12 @@ class UserRating extends React.Component {
   render() {
     const dropdownHidden = this.state.dropdown ? "" : "hidden";
     const dropdownClasses = `ratings-dropdown ${dropdownHidden}`;
+    const isUserRated = this.state.rating ? "yellow" : "";
 
     return (
       <div className="user-rating" onClick={() => this.toggleDropdown()}>
         <p className="rating">{this.state.rating || "Rate This"}</p>
-        <i className="fas fa-thumbs-up"></i>
+        <i className={"fas fa-thumbs-up " + isUserRated}></i>
         <div className={dropdownClasses} onMouseOver={this.hoverHandler}>
           <i className="fas fa-thumbs-up rating-selector" data-value="0" onClick={this.updateRating}></i>
           <i className="fas fa-thumbs-up rating-selector" data-value="1" onClick={this.updateRating}></i>
