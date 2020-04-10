@@ -18,5 +18,5 @@ export const postRating = async (movieID, userID, newRating) => {
 
   const rating = await response.json();
 
-  return rating;
+  return rating.rating.rating;
 }
