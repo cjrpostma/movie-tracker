@@ -7,6 +7,8 @@ export const requestRatings = userID => async dispatch => {
     const ratings = await getRatings(userID);
     await dispatch(getRatingsSuccess(ratings));
     dispatch(isLoading(false));
+
+    return true;
   } catch (error) {
     dispatch(isLoading(false));
     dispatch(hasErrored(error.message));

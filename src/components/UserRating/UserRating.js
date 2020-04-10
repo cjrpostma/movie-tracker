@@ -3,16 +3,22 @@ import './UserRating.scss';
 import { connect } from 'react-redux';
 import { postRating } from '../../apiCalls/postRating';
 import { requestRating } from '../../thunks/requestRating';
+import { getMovieRating } from '../../selectors';
 import PropTypes from 'prop-types';
 
 class UserRating extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: null,
+      rating: [],
       dropdown: false,
       movieID: props.movieID,
     }
+  }
+
+  componentDidUpdate() {
+    console.log(this.props.ratings);
+    // this.setState({rating: [...this.props.ratings]})
   }
 
   toggleDropdown = (e) => {
@@ -32,7 +38,6 @@ class UserRating extends React.Component {
     const newRating = parseInt(e.target.dataset.value) +  1;
 
     const updatedRating = await postRating(this.props.movieID, this.props.user.id, newRating);
-    console.log(updatedRating);
     this.setState({rating: updatedRating});
   }
 
@@ -63,7 +68,8 @@ class UserRating extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  ratings: state.ratings,
 })
 
 const mapDispatchToProps = dispatch => ({
