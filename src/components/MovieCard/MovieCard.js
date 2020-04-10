@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
 import './MovieCard.scss';
 import UserRating from '../UserRating/UserRating';
 
@@ -11,6 +12,7 @@ const MovieCard = ({
   imageBackdrop,
   release,
   title,
+  user
 }) => (
 
     <article className="movie-card">
@@ -26,11 +28,15 @@ const MovieCard = ({
             <p>{avgRating.toFixed()}</p>
             <i className="fas fa-star"></i>
           </div>
-          <UserRating movieID={id}/>
+          {user && <UserRating movieID={id}/>}
         </div>
       </div>
     </article>
 
 );
 
-export default MovieCard;
+const mapStateToProps = state => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps)(MovieCard);
