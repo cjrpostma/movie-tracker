@@ -30,7 +30,9 @@ class UserRating extends React.Component {
 
   updateRating = async (e) => {
     const newRating = parseInt(e.target.dataset.value) +  1;
-    const updatedRating = await postRating(this.props.movieID, 2, newRating);
+
+    const updatedRating = await postRating(this.props.movieID, this.props.user.id, newRating);
+    console.log(updatedRating);
     this.setState({rating: updatedRating});
   }
 
@@ -60,9 +62,9 @@ class UserRating extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-
-}
+const mapStateToProps = state => ({
+  user: state.user
+})
 
 const mapDispatchToProps = dispatch => ({
   postRating: () => dispatch(requestRating())
