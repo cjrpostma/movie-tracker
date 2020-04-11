@@ -26,7 +26,7 @@ class LoginForm extends Component {
   onSubmit = async e => {
     e.preventDefault();
     let user = await this.props.authorizeUser(this.state);
-    await this.props.requestRatings(user.id);
+    this.props.requestRatings(user.id);
     this.setState({
       email: '',
       password: '',

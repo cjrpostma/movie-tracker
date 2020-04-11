@@ -10,15 +10,22 @@ class UserRating extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: [],
+      rating: null,
       dropdown: false,
       movieID: props.movieID,
     }
   }
 
   componentDidUpdate() {
-    console.log(this.props.ratings);
-    // this.setState({rating: [...this.props.ratings]})
+    let movieRating = this.props.rating(this.props.movieID);
+
+    if (movieRating) {
+      movieRating = movieRating.rating;
+    };
+
+    if (this.state.rating != movieRating) {
+      this.setState({rating: movieRating});
+    }
   }
 
   toggleDropdown = (e) => {
@@ -69,7 +76,7 @@ class UserRating extends React.Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  ratings: state.ratings,
+  rating: (id) => getMovieRating(id, state.ratings),
 })
 
 const mapDispatchToProps = dispatch => ({
