@@ -20,6 +20,13 @@ class UserRating extends React.Component {
     this.setState({rating: rating});
   }
 
+  componentDidUpdate() {
+    if (this.state.rating != this.props.rating(this.props.movieID)) {
+      const rating = this.props.rating(this.props.movieID);
+      this.setState({rating: rating});
+    }
+  }
+
   toggleDropdown = (e) => {
     this.setState({dropdown: !this.state.dropdown})
   }
