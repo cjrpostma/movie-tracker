@@ -10,3 +10,13 @@ export const getLatestMovies = movies => {
   const moviesCopy = [...movies];
   return moviesCopy.sort((a, b) => b.release_date - a.release_date);
 };
+
+export const getMovieRating = (id, ratings) => {
+  const movie = {...ratings.find(item => item.movie_id === id)};
+
+  if (movie.rating) {
+    return movie.rating;
+  } else {
+    return null;
+  }
+}

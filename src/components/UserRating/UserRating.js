@@ -1,13 +1,29 @@
 import React from 'react';
 import './UserRating.scss';
+import { connect } from 'react-redux';
+import { requestRating } from '../../thunks/requestRating';
+import { getMovieRating } from '../../selectors';
 import PropTypes from 'prop-types';
 
 class UserRating extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       rating: null,
-      dropdown: false
+      dropdown: false,
+      movieID: props.movieID,
+    }
+  }
+
+  componentDidMount() {
+    const rating = this.props.rating(this.props.movieID);
+    this.setState({rating: rating});
+  }
+
+  componentDidUpdate() {
+    if (this.state.rating != this.props.rating(this.props.movieID)) {
+      const rating = this.props.rating(this.props.movieID);
+      this.setState({rating: rating});
     }
   }
 
@@ -24,9 +40,9 @@ class UserRating extends React.Component {
     });
   }
 
-  updateRating = (e) => {
-    const rating = parseInt(e.target.dataset.value) +  1;
-    this.setState({rating: rating});
+  updateRating = async (e) => {
+    const newRating = parseInt(e.target.dataset.value) +  1;
+    await this.props.postRating(this.props.movieID, this.props.userID, newRating);
   }
 
   render() {
@@ -55,7 +71,16 @@ class UserRating extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  rating: (id) => getMovieRating(id, state.ratings),
+  userID: state.user.id
+})
+
+const mapDispatchToProps = dispatch => ({
+  postRating: (movieID, userID, newRating) => dispatch(requestRating(movieID, userID, newRating))
+})
+
 UserRating.propTypes = {
 };
 
-export default UserRating;
+export default connect(mapStateToProps, mapDispatchToProps)(UserRating);
