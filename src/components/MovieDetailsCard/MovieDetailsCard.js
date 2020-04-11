@@ -1,16 +1,17 @@
 import React from 'react';
 import UserRating from '../UserRating/UserRating';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import './MovieDetailsCard.scss';
 
-const MovieDetailsCard = ({ image, releaseDate, title, rating, overview }) => (
+const MovieDetailsCard = ({ image, releaseDate, title, rating, overview, user }) => (
   <section className="movie-details-card-wrapper">
     <img src={image} alt={title} />
     <article>
       <p>Release Date: {releaseDate}</p>
       <h2>{title}</h2>
       <p>Rating: {rating}</p>
-      <UserRating />
+      {user && <UserRating />}
       <p>{overview}</p>
     </article>
   </section>
@@ -24,4 +25,8 @@ MovieDetailsCard.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-export default MovieDetailsCard;
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps)(MovieDetailsCard);
