@@ -52,6 +52,8 @@ class UserRating extends React.Component {
     const dropdownHidden = this.state.dropdown ? "" : "hidden";
     const dropdownClasses = `ratings-dropdown ${dropdownHidden}`;
     const isUserRated = this.state.rating ? "yellow" : "";
+    console.log(isUserRated);
+    console.log('state rating', this.state.rating);
 
     return (
       <div className="user-rating" onClick={() => this.toggleDropdown()}>
@@ -68,7 +70,7 @@ class UserRating extends React.Component {
           <i className="fas fa-thumbs-up rating-selector" data-value="7" onClick={this.updateRating}></i>
           <i className="fas fa-thumbs-up rating-selector" data-value="8" onClick={this.updateRating}></i>
           <i className="fas fa-thumbs-up rating-selector" data-value="9" onClick={this.updateRating}></i>
-          <i className="far fa-times-circle" data-value={this.state.rating - 1}></i>
+          <i className="far fa-times-circle" data-value={this.state.rating - 1 || 0}></i>
         </div>
       </div>)
   }
