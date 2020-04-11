@@ -42,8 +42,7 @@ class UserRating extends React.Component {
 
   updateRating = async (e) => {
     const newRating = parseInt(e.target.dataset.value) +  1;
-    const updatedRating = await this.props.postRating(this.props.movieID, this.props.userID, newRating);
-    // this.setState({rating: updatedRating});
+    await this.props.postRating(this.props.movieID, this.props.userID, newRating);
   }
 
   render() {
