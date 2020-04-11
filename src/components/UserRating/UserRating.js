@@ -1,7 +1,6 @@
 import React from 'react';
 import './UserRating.scss';
 import { connect } from 'react-redux';
-import { postRating } from '../../apiCalls/postRating';
 import { requestRating } from '../../thunks/requestRating';
 import { getMovieRating } from '../../selectors';
 import PropTypes from 'prop-types';
@@ -36,8 +35,8 @@ class UserRating extends React.Component {
 
   updateRating = async (e) => {
     const newRating = parseInt(e.target.dataset.value) +  1;
-    const updatedRating = await postRating(this.props.movieID, 2, newRating);
-    this.setState({rating: updatedRating});
+    const updatedRating = await this.props.postRating(this.props.movieID, this.props.userID, newRating);
+    // this.setState({rating: updatedRating});
   }
 
   render() {
@@ -68,10 +67,11 @@ class UserRating extends React.Component {
 
 const mapStateToProps = state => ({
   rating: (id) => getMovieRating(id, state.ratings),
+  userID: state.user.id
 })
 
 const mapDispatchToProps = dispatch => ({
-  postRating: () => dispatch(requestRating())
+  postRating: (movieID, userID, newRating) => dispatch(requestRating(movieID, userID, newRating))
 })
 
 UserRating.propTypes = {
