@@ -3,6 +3,7 @@ import './UserRating.scss';
 import { connect } from 'react-redux';
 import { postRating } from '../../apiCalls/postRating';
 import { requestRating } from '../../thunks/requestRating';
+import { getMovieRating } from '../../selectors';
 import PropTypes from 'prop-types';
 
 class UserRating extends React.Component {
@@ -13,6 +14,11 @@ class UserRating extends React.Component {
       dropdown: false,
       movieID: props.movieID,
     }
+  }
+
+  componentDidMount() {
+    const rating = this.props.rating(this.props.movieID);
+    this.setState({rating: rating});
   }
 
   toggleDropdown = (e) => {
@@ -60,9 +66,9 @@ class UserRating extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-
-}
+const mapStateToProps = state => ({
+  rating: (id) => getMovieRating(id, state.ratings),
+})
 
 const mapDispatchToProps = dispatch => ({
   postRating: () => dispatch(requestRating())
