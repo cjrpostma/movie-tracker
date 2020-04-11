@@ -4,15 +4,37 @@
   margin: 1rem;
   img {
     width: 17.5rem;
+    height: 26rem;
     border-top-right-radius: 0.25rem;
     border-top-left-radius: 0.25rem;
   }
+}
+
+.movie-card-rating {
+  text-align: right;
+}
+
+.movie-card-title {
+  max-width: 9rem;
+}
+
+.fa-star {
+  margin: 0 0.2rem;
 }
 
 .title-wrapper {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+}
+
+.avg-rating {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  p {
+    margin-right: 0.25rem;
+  }
 }
 
 a {

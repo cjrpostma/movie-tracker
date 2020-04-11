@@ -13,8 +13,9 @@ const MovieDetails = ({ match, movie}) => {
         image={movie.poster_path}
         releaseDate={movie.release_date}
         title={movie.title}
-        rating={movie.avg_rating}
+        rating={movie.average_rating ? movie.average_rating.toFixed() : null}
         overview={movie.overview}
+        id={movie.id}
       />
     </div>
   )

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { authorizeUser } from '../../thunks/authorizeUser';
+import { requestRatings } from '../../thunks/requestRatings';
 import { hasErrored } from '../../actions';
 import './_LoginForm.scss';
 import Loader from '../../components/Loader/Loader';
@@ -22,9 +23,10 @@ class LoginForm extends Component {
     });
   };
 
-  onSubmit = e => {
+  onSubmit = async e => {
     e.preventDefault();
-    this.props.authorizeUser(this.state);
+    let user = await this.props.authorizeUser(this.state);
+    this.props.requestRatings(user.id);
     this.setState({
       email: '',
       password: '',
@@ -32,7 +34,7 @@ class LoginForm extends Component {
   };
 
   renderRedirect = () => {
-    if (this.props.user) return <Redirect to="/" />;
+    if (this.props.user && this.props.ratings.length) return <Redirect to="/" />;
   };
 
   render() {
@@ -95,11 +97,13 @@ const mapStateToProps = state => ({
   hasError: state.hasError,
   isLoading: state.isLoading,
   user: state.user,
+  ratings: state.ratings,
 });
 
 const mapDispatchToProps = dispatch => ({
   authorizeUser: loginData => dispatch(authorizeUser(loginData)),
   hasErrored: errorStatus => dispatch(hasErrored(errorStatus)),
+  requestRatings: userID => dispatch(requestRatings(userID)),
 });
 
 LoginForm.propTypes = {

@@ -1,6 +1,6 @@
-import { fetchMovies } from './fetchMovies';
+import { getMovies } from './getMovies';
 
-describe('fetchMovies', () => {
+describe('getMovies', () => {
   const mockResponse = {
     movies: [
       {
@@ -27,7 +27,7 @@ describe('fetchMovies', () => {
   it('should call fetch with the correct arguments', () => {
     window.fetch = jest.fn();
 
-    fetchMovies();
+    getMovies();
     expect(window.fetch).toHaveBeenCalledTimes(1);
     expect(window.fetch).toHaveBeenCalledWith(
       'https://rancid-tomatillos.herokuapp.com/api/v1/movies'
@@ -42,7 +42,7 @@ describe('fetchMovies', () => {
       })
     );
 
-    expect(fetchMovies()).resolves.toEqual(mockResponse.movies);
+    expect(getMovies()).resolves.toEqual(mockResponse.movies);
   });
 
   it('should throw if response not ok', () => {
@@ -52,7 +52,7 @@ describe('fetchMovies', () => {
       })
     );
 
-    expect(fetchMovies()).rejects.toEqual(Error('Error fetching movies.'));
+    expect(getMovies()).rejects.toEqual(Error('Error fetching movies.'));
   });
 
   it('should reject when failing to fetch', () => {
@@ -60,6 +60,6 @@ describe('fetchMovies', () => {
       .fn()
       .mockImplementation(() => Promise.reject(Error('Failed to fetch')));
 
-    expect(fetchMovies()).rejects.toEqual(Error('Failed to fetch'));
+    expect(getMovies()).rejects.toEqual(Error('Failed to fetch'));
   });
 });

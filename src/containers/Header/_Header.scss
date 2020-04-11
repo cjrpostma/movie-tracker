@@ -4,9 +4,15 @@
   color: white;
   display: flex;
   flex-direction: row;
-  height: 4rem;
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 1rem;
+  width: 100vw;
+
+  & .fas {
+    padding-right: 1rem;
+  }
 
   & .header-link {
     color: white;
