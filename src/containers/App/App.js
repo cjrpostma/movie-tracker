@@ -38,7 +38,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 App.propTypes = {
-  getMovies: PropTypes.func.isRequired,
+  requestMovies: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(App);
