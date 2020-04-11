@@ -26,7 +26,8 @@ class LoginForm extends Component {
   onSubmit = async e => {
     e.preventDefault();
     let user = await this.props.authorizeUser(this.state);
-    this.props.requestRatings(user.id);
+    let ratings = await this.props.requestRatings(user.id);
+    console.log(ratings);
     this.setState({
       email: '',
       password: '',
@@ -34,7 +35,7 @@ class LoginForm extends Component {
   };
 
   renderRedirect = () => {
-    if (this.props.user) return <Redirect to="/" />;
+    if (this.props.user && this.props.ratings.length) return <Redirect to="/" />;
   };
 
   render() {
@@ -97,6 +98,7 @@ const mapStateToProps = state => ({
   hasError: state.hasError,
   isLoading: state.isLoading,
   user: state.user,
+  ratings: state.ratings
 });
 
 const mapDispatchToProps = dispatch => ({

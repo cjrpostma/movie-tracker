@@ -16,15 +16,11 @@ class UserRating extends React.Component {
     }
   }
 
-  componentDidUpdate() {
-    let movieRating = this.props.rating(this.props.movieID);
+  componentDidMount() {
+    const movieRating = this.props.rating(this.props.movieID);
 
     if (movieRating) {
-      movieRating = movieRating.rating;
-    };
-
-    if (this.state.rating != movieRating) {
-      this.setState({rating: movieRating});
+      this.setState({rating: movieRating.rating});
     }
   }
 
@@ -49,6 +45,7 @@ class UserRating extends React.Component {
   }
 
   render() {
+    console.log(this.state.rating);
     const dropdownHidden = this.state.dropdown ? "" : "hidden";
     const dropdownClasses = `ratings-dropdown ${dropdownHidden}`;
     const isUserRated = this.state.rating ? "yellow" : "";
@@ -70,7 +67,7 @@ class UserRating extends React.Component {
           <i className="fas fa-thumbs-up rating-selector" data-value="7" onClick={this.updateRating}></i>
           <i className="fas fa-thumbs-up rating-selector" data-value="8" onClick={this.updateRating}></i>
           <i className="fas fa-thumbs-up rating-selector" data-value="9" onClick={this.updateRating}></i>
-          <i className="far fa-times-circle" data-value={this.state.rating - 1 || 0}></i>
+          <i className="far fa-times-circle" data-value={this.state.rating - 1}></i>
         </div>
       </div>)
   }

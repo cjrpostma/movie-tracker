@@ -13,7 +13,7 @@ export const getLatestMovies = movies => {
 
 export const getMovieRating = (id, ratings) => {
   if (ratings.length) {
-    return ratings.find(movie => movie.movie_id === id);
+    return ratings.find(movie => movie.movie_id === id) || null;
   } else {
     return null;
   }
