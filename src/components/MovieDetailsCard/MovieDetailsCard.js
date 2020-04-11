@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './MovieDetailsCard.scss';
 
-const MovieDetailsCard = ({ image, releaseDate, title, rating, overview, user }) => (
+const MovieDetailsCard = ({ image, releaseDate, title, rating, overview, user, id }) => (
   <section className="movie-details-card-wrapper">
     <img src={image} alt={title} />
     <article>
       <p>Release Date: {releaseDate}</p>
       <h2>{title}</h2>
       <p>Rating: {rating}</p>
-      {user && <UserRating />}
+      {user && <UserRating movieID={id}/>}
       <p>{overview}</p>
     </article>
   </section>

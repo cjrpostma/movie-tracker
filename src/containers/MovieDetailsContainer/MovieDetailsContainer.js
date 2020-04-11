@@ -15,6 +15,7 @@ const MovieDetails = ({ match, movie}) => {
         title={movie.title}
         rating={movie.average_rating ? movie.average_rating.toFixed() : null}
         overview={movie.overview}
+        id={movie.id}
       />
     </div>
   )
