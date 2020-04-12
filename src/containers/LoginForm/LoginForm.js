@@ -25,7 +25,7 @@ class LoginForm extends Component {
 
   onSubmit = async e => {
     e.preventDefault();
-    let user = await this.props.authorizeUser(this.state);
+    const user = await this.props.authorizeUser(this.state);
     this.props.requestRatings(user.id);
     this.setState({
       email: '',
@@ -34,7 +34,8 @@ class LoginForm extends Component {
   };
 
   renderRedirect = () => {
-    if (this.props.user && this.props.ratings.length) return <Redirect to="/" />;
+    if (this.props.user && this.props.ratings.length)
+      return <Redirect to="/" />;
   };
 
   render() {
@@ -50,6 +51,7 @@ class LoginForm extends Component {
             <button
               aria-label="Close login form"
               className="close-button"
+              data-testid="close-button"
               onClick={() => this.props.hasErrored(null)}
               type="button"
             >
