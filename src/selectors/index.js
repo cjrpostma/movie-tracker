@@ -12,11 +12,18 @@ export const getLatestMovies = movies => {
 };
 
 export const getMovieRating = (id, ratings) => {
-  const movie = {...ratings.find(item => item.movie_id === id)};
+  const movie = { ...ratings.find(item => item.movie_id === id) };
 
   if (movie.rating) {
     return movie.rating;
-  } else {
-    return null;
   }
-}
+  return null;
+};
+
+export const getRatingID = (movieID, ratings) => {
+  const ratingsCopy = [...ratings];
+  const ratingID = ratingsCopy.find(rating => rating.movie_id === movieID).id;
+  console.log(ratingID);
+
+  return ratingID;
+};
