@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .layout {
   display: grid;
   grid-template-columns: $nav-width 1fr;
@@ -7,6 +9,8 @@
 .main {
   align-self: center;
   grid-column: 2 / 3;
-  grid-row: 2 / 3;
+  grid-row: 2 / -1;
+  height: 100%;
   justify-self: center;
+  width: calc(100vw - #{$nav-width});
 }

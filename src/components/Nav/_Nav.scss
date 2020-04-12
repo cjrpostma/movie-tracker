@@ -5,8 +5,8 @@
   color: #ffffff;
   font-size: 1.2rem;
   grid-column: 1 / 2;
-  grid-row: 2 / 3;
-  height: calc(100vh - #{$header-height});
+  grid-row: 2 / -1;
+
   min-width: $nav-width;
   padding: 1rem;
 
