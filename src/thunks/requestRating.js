@@ -11,9 +11,11 @@ export const requestRating = (
 ) => async dispatch => {
   try {
     dispatch(isLoading(true));
+
     if (ratingID) {
       await deleteRating(userID, ratingID);
     }
+
     await postRating(movieID, userID, newRating);
     const updatedRatings = await getRatings(userID);
     await dispatch(postRatingSuccess(updatedRatings));

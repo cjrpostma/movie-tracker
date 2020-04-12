@@ -11,11 +11,7 @@ export const deleteRating = async (userID, ratingID) => {
     }
   );
 
-  console.log(response);
-
   if (!response.ok) {
     throw new Error('Error deleting rating.');
   }
-
-  await response.json();
 };

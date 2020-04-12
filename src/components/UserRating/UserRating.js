@@ -46,7 +46,7 @@ class UserRating extends React.Component {
   updateRating = async e => {
     const newRating = parseInt(e.target.dataset.value) + 1;
     const isRated = this.props.rating(this.props.movieID);
-    let ratingID;
+    let ratingID = null;
     if (isRated) {
       ratingID = this.props.getRatingID(this.props.movieID);
     }
