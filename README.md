@@ -1,6 +1,6 @@
 # Movie Tracker
 
-Contributors: [Ryan Bahan](https://github.com/ryanbahan), [Jordan Whitten](https://github.com/jordanwa1947), [Chris Postma](https://github.com/cjrpostma)
+Contributors: [Ryan Bahan](https://github.com/ryanbahan), [Chris Postma](https://github.com/cjrpostma)
 
 1. [Abstract](#1-abstract)
 2. [Technology](#2-technology)

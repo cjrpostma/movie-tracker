@@ -9,8 +9,6 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from '../../reducers';
 
-import { authorizeUser } from '../../thunks/authorizeUser';
-
 describe('LoginForm', () => {
   it('should render the correct content', () => {
     const store = createStore(rootReducer);
@@ -39,6 +37,8 @@ describe('LoginForm', () => {
       </Provider>
     );
 
+    expect(getByRole('button', { name: 'Log in' })).toHaveAttribute('disabled');
+
     fireEvent.change(getByLabelText('Email'), {
       target: { value: 'sam@turing.io' },
     });
@@ -47,6 +47,11 @@ describe('LoginForm', () => {
       target: { value: '123456' },
     });
 
-    // fireEvent.click(getByRole('button', { name: 'Log in' }));
+    expect(getByRole('button', { name: 'Log in' })).not.toHaveAttribute(
+      'disabled'
+    );
+
+    expect(getByLabelText('Email').value).toEqual('sam@turing.io');
+    expect(getByLabelText('Password').value).toEqual('123456');
   });
 });
