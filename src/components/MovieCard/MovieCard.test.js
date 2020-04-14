@@ -32,16 +32,14 @@ describe('MovieCard', () => {
   })
 
   it('should render the correct content', () => {
-    const { getByText, getByAltText, debug } = utils;
+    const { getByText, getByAltText } = utils;
 
     const movieTitle = getByText("Dummy Movie");
     const movieRating = getByText("6");
     const img = getByAltText("Poster for Dummy Movie")
 
-    debug();
 
     expect(movieTitle).toBeInTheDocument();
-    expect(movieRating).toBeInTheDocument();
     expect(movieRating).toBeInTheDocument();
     expect(img.src).toEqual("http://google.com/");
   });
