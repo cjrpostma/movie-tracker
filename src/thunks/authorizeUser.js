@@ -8,7 +8,7 @@ export const authorizeUser = loginData => async dispatch => {
     await dispatch(loginUser(user));
     dispatch(isLoading(false));
     dispatch(hasErrored(null));
-    
+
     return user;
   } catch (error) {
     dispatch(isLoading(false));

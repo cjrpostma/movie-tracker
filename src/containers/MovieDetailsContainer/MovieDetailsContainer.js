@@ -9,6 +9,7 @@ const MovieDetails = ({ match, movie}) => {
 
   return (
     <div>
+    {console.log(movie)}
       <MovieDetailsCard
         image={movie.poster_path}
         releaseDate={movie.release_date}

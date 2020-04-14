@@ -6,6 +6,33 @@ import {
   getRatingID,
 } from './index';
 
+const mockRatings = [
+  {
+    "id": 50,
+    "user_id": 2,
+    "movie_id": 18,
+    "rating": 5,
+    "created_at": "2020-04-10T22:18:31.559Z",
+    "updated_at": "2020-04-10T22:18:31.559Z"
+  },
+  {
+    "id": 51,
+    "user_id": 2,
+    "movie_id": 7,
+    "rating": 7,
+    "created_at": "2020-04-10T22:18:33.746Z",
+    "updated_at": "2020-04-10T22:18:33.746Z"
+  },
+  {
+    "id": 53,
+    "user_id": 2,
+    "movie_id": 10,
+    "rating": 7,
+    "created_at": "2020-04-10T22:29:01.246Z",
+    "updated_at": "2020-04-10T22:29:01.246Z"
+  },
+]
+
 const mockState = {
   movies: [
     {
@@ -73,3 +100,17 @@ it('(getTopMovies) should sort movies by average_rating', () => {
 
   expect(isSorted).toBeTruthy();
 });
+
+it("getMovieRating should be able to get a movie rating by its id", () => {
+  const movieRatings = getMovieRating(18, mockRatings);
+  const noRating = getMovieRating(11, mockRatings);
+
+  expect(movieRatings).toEqual(5);
+  expect(noRating).toEqual(null);
+})
+
+it("getRatingID should be able to get a movie rating id", () => {
+  const ratingID = getRatingID(18, mockRatings);
+
+  expect(ratingID).toEqual(50);
+})
