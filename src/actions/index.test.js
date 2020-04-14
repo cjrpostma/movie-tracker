@@ -53,7 +53,43 @@ describe('error actions', () => {
   });
 });
 
-describe('movie actions', () => {
-  // TODO Ryan to write movie action tests
-  // it();
-});
+describe('ratings actions', () => {
+  it('should have a type of GET_RATINGS_SUCCESS', () => {
+    const mockRatings = [{movie: "movie"}, {movie: "movie2"}];
+
+    const result = actions.getRatingsSuccess(mockRatings);
+
+    const expectedAction = {
+      type: actionTypes.GET_RATINGS_SUCCESS,
+      payload: mockRatings,
+    }
+
+    expect(result).toEqual(expectedAction);
+  })
+
+  it('should have a type of POST_RATING_SUCCESS', () => {
+    const mockRatings = [{movie: "movie"}, {movie: "movie2"}];
+
+    const result = actions.postRatingSuccess(mockRatings);
+
+    const expectedAction = {
+      type: actionTypes.POST_RATING_SUCCESS,
+      payload: mockRatings,
+    }
+
+    expect(result).toEqual(expectedAction);
+  })
+
+  it('should have a type of DELETE_RATING_SUCCESS', () => {
+    const mockRatings = [{movie: "movie"}, {movie: "movie2"}];
+
+    const result = actions.deleteRatingSuccess(mockRatings);
+
+    const expectedAction = {
+      type: actionTypes.DELETE_RATING_SUCCESS,
+      payload: mockRatings,
+    }
+
+    expect(result).toEqual(expectedAction);
+  })
+})
