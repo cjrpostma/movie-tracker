@@ -1,6 +1,6 @@
 {
   "name": "movie-tracker",
-  "homepage": "http://cjrpostma.github.io/movie-tracker",
+  "homepage": "http://cjrpostma.github.io/movie-tracker/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
