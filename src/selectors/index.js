@@ -23,7 +23,6 @@ export const getMovieRating = (id, ratings) => {
 export const getRatingID = (movieID, ratings) => {
   const ratingsCopy = [...ratings];
   const ratingID = ratingsCopy.find(rating => rating.movie_id === movieID).id;
-  console.log(ratingID);
 
   return ratingID;
 };
