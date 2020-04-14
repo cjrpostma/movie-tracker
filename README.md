@@ -8,11 +8,11 @@ Contributors: [Ryan Bahan](https://github.com/ryanbahan), [Chris Postma](https:/
 4. [Installation](#4-testing)
 5. [Deployment](#5-deployment)
 
-(images forthcoming...)
+![image](https://user-images.githubusercontent.com/44818815/79270415-603dad80-7e5b-11ea-8a4b-bff77d6b4511.gif)
 
 ### 1. Abstract
 
-An educational project utilizing React, React Router, React Prop-Types, React Testing Library, and Redux to create the front end of a movie ratings website with dynamic routes, favorites, and searching.
+An educational project utilizing React, React Router, React Prop-Types, React Testing Library, and Redux to create the front end of a movie ratings website with dynamic routes.
 
 Learning goals:
 
